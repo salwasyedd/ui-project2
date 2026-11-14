@@ -5,7 +5,10 @@
   // Svelte 5 bindable properties
   let {
     activeCategory = $bindable('For You'),
-    searchQuery = $bindable('')
+    searchQuery = $bindable(''),
+    // Landing view: page shows its own large logo and search
+    minimal = false,
+    onHome = () => {}
   } = $props();
 
   let darkMode = $state(false);
@@ -20,16 +23,21 @@
   }
 </script>
 
-<header class="site-header">
+<header class="site-header" class:minimal>
   <div class="header-main">
 
     <!-- Yahoo Logo -->
-    <a href="/" class="logo" aria-label="Yahoo Home">
+    {#if !minimal}
+    <a href="/" class="logo" aria-label="Yahoo Home" onclick={onHome}>
       yahoo<span>!</span>
     </a>
 
     <!-- Search Bar -->
-    <div class="search-container">
+    <form
+      class="search-container"
+      role="search"
+      onsubmit={(event) => event.preventDefault()}
+    >
       <input
         type="search"
         placeholder="Search news and topics..."
@@ -37,14 +45,11 @@
         bind:value={searchQuery}
       />
 
-      <button
-        type="button"
-        class="search-button"
-        onclick={() => {}}
-      >
+      <button type="submit" class="search-button">
         Search
       </button>
-    </div>
+    </form>
+    {/if}
 
     <!-- Header Actions -->
     <div class="header-actions">
@@ -60,7 +65,7 @@
 
       <span class="mail-link">✉ Mail</span>
 
-      <span class="profile-avatar">P</span>
+      <span class="profile-avatar" role="img" aria-label="Profile">M</span>
     </div>
 
   </div>
@@ -76,6 +81,7 @@
         <button
           type="button"
           class:active={activeCategory === category}
+          aria-pressed={activeCategory === category}
           onclick={() => {
             activeCategory = category;
           }}
