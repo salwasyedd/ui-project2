@@ -1,6 +1,6 @@
-
 <script>
   import { categories } from '#lib/data/stories.js';
+  import AuthButton from './AuthButton.svelte';
 
   // Svelte 5 bindable properties
   let {
@@ -65,7 +65,7 @@
 
       <span class="mail-link">✉ Mail</span>
 
-      <span class="profile-avatar" role="img" aria-label="Profile">M</span>
+      <AuthButton />
     </div>
 
   </div>
