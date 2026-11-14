@@ -10,24 +10,15 @@
 
 <aside class="sidebar">
 
-  <!-- Weather Widget -->
-  <section class="sidebar-widget weather-widget">
-    <div class="widget-heading">
-      <h3>Weather</h3>
-      <span>☀️</span>
-    </div>
-
-    <p class="weather-location">Cincinnati, OH</p>
-
+  <!-- Weather Widget (compact, secondary to news) -->
+  <section class="sidebar-widget weather-widget" aria-label="Weather">
     <div class="weather-main">
       <span class="temperature">68°F</span>
-      <span class="weather-description">
-        Sunny
-      </span>
+      <span class="weather-description">☀️ Sunny</span>
     </div>
 
-    <p class="weather-note">
-      Demo weather information
+    <p class="weather-location">
+      Cincinnati, OH · Demo data
     </p>
   </section>
 
@@ -53,20 +44,6 @@
         </button>
       {/each}
     </div>
-  </section>
-
-  <!-- Personalization -->
-  <section class="sidebar-widget customize-widget">
-    <h3>Your News, Your Way</h3>
-
-    <p>
-      A cleaner, more personalized browsing
-      experience with less clutter.
-    </p>
-
-    <span class="coming-soon">
-      More personalization coming soon
-    </span>
   </section>
 
 </aside>

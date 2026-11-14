@@ -5,7 +5,7 @@ import Header from '#lib/components/Header.svelte';
 import StoryCard from '#lib/components/StoryCard.svelte';
 import Sidebar from '#lib/components/Sidebar.svelte';
 
-import { stories } from '#lib/data/stories.js';
+import { stories, trendingTopics } from '#lib/data/stories.js';
 
 
   // Homepage state
@@ -35,6 +35,36 @@ import { stories } from '#lib/data/stories.js';
       return matchesCategory && matchesSearch && matchesSaved;
     })
   );
+
+  // Lead with one featured story, except in the saved list
+  let featuredStory = $derived(
+    showSavedOnly ? null : (filteredStories[0] ?? null)
+  );
+
+  let gridStories = $derived(
+    featuredStory ? filteredStories.slice(1) : filteredStories
+  );
+
+  // "For You" with no search or Saved filter is a clean,
+  // search-focused landing view with no feed
+  let isHome = $derived(
+    activeCategory === 'For You' &&
+      !searchQuery.trim() &&
+      !showSavedOnly
+  );
+
+  // Landing search applies on submit, so the input isn't
+  // replaced by results mid-typing
+  let homeQuery = $state('');
+
+  function submitHomeSearch(event) {
+    event.preventDefault();
+    const query = homeQuery.trim();
+    if (query) {
+      searchQuery = query;
+      homeQuery = '';
+    }
+  }
 
   // Save or unsave an article
   function toggleSave(id) {
@@ -85,32 +115,72 @@ import { stories } from '#lib/data/stories.js';
   />
 </svelte:head>
 
+<svelte:window
+  onkeydown={(event) => {
+    if (event.key === 'Escape' && selectedStory) {
+      closeStory();
+    }
+  }}
+/>
+
 <!-- HEADER -->
 <Header
   bind:activeCategory
   bind:searchQuery
+  minimal={isHome}
+  onHome={clearFilters}
 />
 
 <!-- MAIN HOMEPAGE -->
-<main class="page-container">
+<main class="page-container" class:home-container={isHome}>
 
-  <!-- WELCOME SECTION -->
-  <section class="welcome-section">
-    <div>
-      <p class="eyebrow">YOUR DAILY DISCOVERIES</p>
+  {#if isHome}
 
-      <h1>Stay informed. Stay inspired.</h1>
+  <!-- SEARCH-FOCUSED LANDING -->
+  <section class="home-hero" aria-label="Yahoo search">
+    <h1 class="logo home-logo">yahoo<span>!</span></h1>
 
-      <p class="welcome-description">
-        Everything that matters to you, all in one
-        clean and simple space.
-      </p>
-    </div>
+    <form
+      class="search-container home-search"
+      role="search"
+      onsubmit={submitHomeSearch}
+    >
+      <input
+        type="search"
+        placeholder="Search news and topics..."
+        aria-label="Search news and topics"
+        bind:value={homeQuery}
+      />
 
-    <div class="welcome-decoration">
-      <span>✦</span>
+      <button type="submit" class="search-button">
+        Search
+      </button>
+    </form>
+
+    <div class="home-shortcuts">
+      {#each trendingTopics as topic}
+        <button
+          type="button"
+          class="home-chip"
+          onclick={() => searchTopic(topic)}
+        >
+          {topic}
+        </button>
+      {/each}
+
+      <button
+        type="button"
+        class="home-chip"
+        onclick={() => {
+          showSavedOnly = true;
+        }}
+      >
+        ☆ Saved ({savedArticles.length})
+      </button>
     </div>
   </section>
+
+  {:else}
 
   <!-- MAIN CONTENT AND SIDEBAR -->
   <div class="content-layout">
@@ -128,14 +198,15 @@ import { stories } from '#lib/data/stories.js';
                 : activeCategory}
           </h2>
 
-          <p>
-            Discover what's happening around you.
-          </p>
+          {#if searchQuery.trim()}
+            <p>Results for “{searchQuery.trim()}”</p>
+          {/if}
         </div>
 
         <button
           class="view-saved-button"
           class:selected={showSavedOnly}
+          aria-pressed={showSavedOnly}
           onclick={() => {
             showSavedOnly = !showSavedOnly;
           }}
@@ -150,52 +221,47 @@ import { stories } from '#lib/data/stories.js';
       {#if filteredStories.length > 0}
 
         <!-- FEATURED STORY -->
-        {#if activeCategory === 'For You' && !searchQuery && !showSavedOnly}
-
+        {#if featuredStory}
           <div class="featured-container">
             <StoryCard
-              story={filteredStories[0]}
+              story={featuredStory}
               featured={true}
-              saved={savedArticles.includes(filteredStories[0].id)}
+              saved={savedArticles.includes(featuredStory.id)}
               onRead={openStory}
               onSave={toggleSave}
             />
           </div>
-
         {/if}
 
         <!-- NEWS GRID -->
-        <div class="stories-grid">
-
-          {#each filteredStories as story (story.id)}
-
-            {#if activeCategory !== 'For You' ||
-                 searchQuery ||
-                 showSavedOnly ||
-                 story.id !== filteredStories[0].id}
-
+        {#if gridStories.length > 0}
+          <div class="stories-grid">
+            {#each gridStories as story (story.id)}
               <StoryCard
                 {story}
                 saved={savedArticles.includes(story.id)}
                 onRead={openStory}
                 onSave={toggleSave}
               />
-
-            {/if}
-
-          {/each}
-
-        </div>
+            {/each}
+          </div>
+        {/if}
 
       {:else}
 
         <!-- NO ARTICLES FOUND -->
         <div class="empty-state">
 
-          <h3>No articles found</h3>
+          <h3>
+            {showSavedOnly && savedArticles.length === 0
+              ? 'No saved articles yet'
+              : 'No articles found'}
+          </h3>
 
           <p>
-            Try another category or search term.
+            {showSavedOnly && savedArticles.length === 0
+              ? 'Use ☆ Save on any story to keep it here.'
+              : 'Try another category or search term.'}
           </p>
 
           <button onclick={clearFilters}>
@@ -212,6 +278,8 @@ import { stories } from '#lib/data/stories.js';
     <Sidebar onTopicClick={searchTopic} />
 
   </div>
+
+  {/if}
 </main>
 
 <!-- FOOTER -->
@@ -238,7 +306,11 @@ import { stories } from '#lib/data/stories.js';
   <div
     class="modal-overlay"
     role="presentation"
-    onclick={closeStory}
+    onclick={(event) => {
+      if (event.target === event.currentTarget) {
+        closeStory();
+      }
+    }}
   >
 
     <div
@@ -247,12 +319,6 @@ import { stories } from '#lib/data/stories.js';
       aria-modal="true"
       aria-label={selectedStory.title}
       tabindex="-1"
-      onclick={(event) => event.stopPropagation()}
-      onkeydown={(event) => {
-        if (event.key === 'Escape') {
-          closeStory();
-        }
-      }}
     >
 
       <button
