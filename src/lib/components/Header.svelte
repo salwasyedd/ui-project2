@@ -68,15 +68,39 @@
   <!-- Navigation -->
   <nav class="navigation" aria-label="News categories">
     {#each categories as category}
-      <button
-        type="button"
-        class:active={activeCategory === category}
-        onclick={() => {
-          activeCategory = category;
-        }}
-      >
-        {category}
-      </button>
+      {#if category === 'Finance'}
+        <a href="/finance" class="finance-nav-link">
+          Finance
+        </a>
+      {:else}
+        <button
+          type="button"
+          class:active={activeCategory === category}
+          onclick={() => {
+            activeCategory = category;
+          }}
+        >
+          {category}
+        </button>
+      {/if}
     {/each}
   </nav>
 </header>
+
+<style>
+  .finance-nav-link {
+    display: inline-flex;
+    align-items: center;
+    color: #666274;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 13px 0;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  .finance-nav-link:hover {
+    color: #6001d2;
+    border-bottom-color: #6001d2;
+  }
+</style>
