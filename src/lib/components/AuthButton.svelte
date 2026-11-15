@@ -2,7 +2,6 @@
   // demo user for sign in prototype
   const demoUser = { name: 'Test Man', email: 'test_man102@yahoo.com' };
 
-  const initial = demoUser.name[0].toUpperCase();
   const initials = demoUser.name
     .split(' ')
     .map((word) => word[0])
@@ -53,7 +52,7 @@
 
 {#if isSignedIn}
   <button type="button" class="profile-avatar" aria-label="Account menu" onclick={open}>
-    {initial}
+    {initials}
   </button>
 {:else}
   <button type="button" class="signin-button" onclick={open}>Sign In</button>
@@ -70,14 +69,11 @@
           <span class="account-avatar">{initials}</span>
           <div>
             <div class="account-name">{demoUser.name}</div>
-            <div class="account-email">{demoUser.email}</div>
           </div>
         </div>
 
-        <button type="button" class="account-settings">⚙ Account settings</button>
-
-        <div class="account-footer">
-          <button type="button" class="link-button signout" onclick={signOut}>
+        <div class="account-actions">
+          <button type="button" class="account-btn" onclick={signOut}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -86,6 +82,10 @@
             </svg>
             Sign out
           </button>
+        </div>
+
+        <div class="account-footer">
+          <button type="button" class="link-button">Account settings</button>
           <button type="button" class="link-button">Help</button>
         </div>
       </div>
@@ -148,7 +148,7 @@
   /* .profile-avatar's circle look comes from app.css; this just resets the button */
   .profile-avatar {
     border: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
   }
 
@@ -323,23 +323,28 @@
     font-weight: 700;
   }
 
-  .account-email {
-    margin-top: 2px;
-    font-size: 14px;
-    color: #b4b4bc;
+  .account-actions {
+    display: flex;
+    gap: 10px;
   }
 
-  .account-settings {
-    width: 100%;
+  .account-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     height: 48px;
+    padding: 0 8px;
     background: transparent;
     color: #fff;
     border: 1px solid #6b6b75;
     border-radius: 999px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
+    white-space: nowrap;
   }
-  .account-settings:hover { background: #111; }
+  .account-btn:hover { background: #111; }
 
   .account-footer {
     display: flex;
@@ -350,9 +355,6 @@
     border-top: 1px solid #2f2f2f;
   }
 
-  .signout {
-    font-size: 13px;
-  }
   .auth-modal input[type='text'].invalid {
   border-color: #ff6b6b;
 }
