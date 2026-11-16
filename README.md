@@ -12,10 +12,11 @@ For this project, we focused on improving Yahoo's existing interface to make it 
 Our goal was to simplify the interface while keeping the main services and functionality that Yahoo already offers.
 
 Some of the main areas we worked on include:
-- Simplifying the landing page and making the search engine the main focus.
-- Improving the sign-in experience and making error messages easier to understand.
-- Revamping the Finance tab and its layout.
-- Maintaining the existing news experience while making it part of the redesigned interface.
+- Simplifying the landing page by removing advertisements and duplicate navigation bars, making the search engine the main focus.
+- Organizing content into category tabs so users can access different sections without displaying everything on the homepage.
+- Improving the sign-in and sign-out experience, including clearer error messages and pop-up functionality.
+- Revamping the Finance tab with a searchable stock explorer, interactive watchlist, and improved layout.
+- Adding light and dark mode options.
 
 ## Design Work
 
@@ -123,27 +124,37 @@ Based on our findings, we focused on simplifying the landing page, improving the
 
 **1. Simplified Landing Page**
 
-One of our main changes was reducing the amount of content displayed on Yahoo's landing page. Instead of having multiple sections, news stories, and other elements competing for attention, we made the search engine the main focus. This creates a much cleaner interface and makes it easier for users to immediately understand the primary purpose of the page.
+One of our main changes was reducing the amount of content displayed on Yahoo's landing page. We removed advertisements and duplicate navigation bars to create a cleaner layout with fewer distractions. Instead of having multiple sections, news stories, and other elements competing for attention, we made the search engine the main focus.
+
+We also organized different types of content into separate category tabs. This allows users to access sections such as News, Sports, Entertainment, Lifestyle, and Technology by clicking on their respective tabs rather than having all of that information displayed on the landing page. These changes create a cleaner interface and make it easier for users to navigate the website.
 
 <p align="center">
   <img src="docs/images/homepage.png" width="700">
 </p>
 
-**2. Improved Sign-in Experience and Error Messages**
 
-We also made changes to the sign-in process to make it less disruptive and easier to understand. Instead of taking users to a separate sign-in page, the sign-in experience now appears in a pop-up. This allows users to sign in without leaving the page they were already on.
+**2. Improved Sign-in and Sign-out Experience**
 
-We also improved the error messages to make it clearer when something goes wrong. For example, instead of displaying a vague error, the interface now provides the message **"Invalid: Username, email or phone number."** This gives users a better understanding of what the issue is.
+We also made changes to the sign-in and sign-out processes to make them less disruptive and easier to use. Instead of taking users to a separate sign-in page, the sign-in experience now appears in a pop-up. This allows users to sign in without leaving the page they were already on.
+
+We also reorganized the sign-out pop-up to make signing out easier for users while maintaining the existing visual style of the sign-in and sign-out experiences.
+
+Additionally, we improved the error messages to make it clearer when something goes wrong. For example, instead of displaying a vague error, the interface now provides the message **"Invalid: Username, email or phone number."** This gives users a better understanding of what the issue is.
 
 <p align="center">
   <img src="docs/images/signin-error.png" width="500">
 </p>
 
+
 **3. Revamped Finance Tab**
 
-We redesigned the Finance section to give it an updated layout and improve the way financial information is presented. This was another major area of focus in our redesign. We also added interactive features to make the Finance page easier to navigate and explore. The buttons in the initial summary section act as shortcuts to different sections of the page. For example, clicking **Explore the Market** takes users directly to the Discover the Market section, while clicking **My Watchlist** takes them to their watchlist.
+We redesigned the Finance section to give it an updated layout and improve the way financial information is presented. We focused on making the page more visually appealing and organized by reducing unnecessary clutter and advertisements, introducing a consistent color palette, and improving the visual hierarchy.
 
-Within the market section, users can click the star icon next to a company to add it to their watchlist. They can also click on a company's name in either the market or watchlist section to expand its information and view more details.
+The Finance page includes a summary section at the top, followed by more detailed information about the market and the user's watchlist. The buttons in the initial summary section act as shortcuts to different sections of the page. For example, clicking **Explore the Market** takes users directly to the Discover the Market section, while clicking **My Watchlist** takes users to their watchlist.
+
+We also added a searchable stock explorer featuring 12 demo companies, allowing users to search for and explore different stocks. Users can add or remove companies from their watchlist using the star icons next to each company. They can also click on a company's name in either the market or watchlist section to expand its information and view more details.
+
+The watchlist is saved even after refreshing the page, allowing users to keep track of their selected companies between visits.
 
 <p align="center">
   <img src="docs/images/finance1.png" width="48%">
@@ -161,8 +172,7 @@ We included tabs on the homepage for News, Sports, Entertainment, Lifestyle, and
 
 **5. Light and Dark Mode**
 
-We also implemented a light and dark mode option that allows users to switch between different themes.
-
+We also implemented a light and dark mode option that allows users to switch between different themes depending on their preference. The user's selected theme is saved even after refreshing the page, so they do not have to select their preferred mode again each time they visit.
 <p align="center">
   <img src="docs/images/lightmode.png" width="48%">
   <img src="docs/images/darkmode.png" width="48%">
@@ -170,13 +180,12 @@ We also implemented a light and dark mode option that allows users to switch bet
 
 ## AI Usage
 
-We used AI tools throughout the project to assist with implementation and documentation.
+We used AI tools throughout the project to assist with implementation, troubleshooting, and documentation.
 
-- **Claude Code:** Integrated with VS Code to assist with implementing and refining the redesign. It was also used to implement our existing sign-in design choices and help integrate the logic for the sign-in pop-up.
-- **ChatGPT:** Used to summarize research notes and help improve grammar, wording, and clarity in our project documentation.
+- **Claude Code:** Integrated with VS Code to assist with implementing and refining the redesign. It was also used to implement our existing sign-in design choices and help integrate the sign-in pop-up logic.
+- **ChatGPT:** Used to assist with refining code and troubleshooting development errors, as well as summarizing research notes and improving grammar, wording, and clarity in our project documentation.
 
-AI tools were used as supporting resources, while our team made the design decisions and reviewed the resulting implementations and documentation.
-
+AI tools were used as supporting resources throughout development, while our team made the design decisions and reviewed the resulting implementations and documentation.
 ## Project Demo
 
 **Video Demo:** [Watch our project demo](https://drive.google.com/file/d/1BLMcUFpPelHPQUrSFI0_aIewel7-RMVm/view?usp=sharing)
