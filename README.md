@@ -116,6 +116,7 @@ We shared our sketches and received the following feedback:
 
 We incorporated the suggestion for a light/dark mode option by adding a toggle that allows users to switch between the two themes. We also considered the feedback about keeping the homepage simple and making the Finance page easy to navigate, with an overview available before users explore more detailed information.
 
+
 ### Redesign Decisions and Approach
 
 Based on our findings, we focused on simplifying the landing page, improving the sign-in experience, and revamping the Finance section.
@@ -124,16 +125,45 @@ Based on our findings, we focused on simplifying the landing page, improving the
 
 One of our main changes was reducing the amount of content displayed on Yahoo's landing page. Instead of having multiple sections, news stories, and other elements competing for attention, we made the search engine the main focus. This creates a much cleaner interface and makes it easier for users to immediately understand the primary purpose of the page.
 
+<p align="center">
+  <img src="docs/images/homepage.png" width="700">
+</p>
+
 **2. Improved Sign-in Experience and Error Messages**
 
 We also made changes to the sign-in process to make it less disruptive and easier to understand. Instead of taking users to a separate sign-in page, the sign-in experience now appears in a pop-up. This allows users to sign in without leaving the page they were already on.
 
 We also improved the error messages to make it clearer when something goes wrong. For example, instead of displaying a vague error, the interface now provides the message **"Invalid: Username, email or phone number."** This gives users a better understanding of what the issue is.
 
+<p align="center">
+  <img src="docs/images/signin-error.png" width="500">
+</p>
+
 **3. Revamped Finance Tab**
 
-We redesigned the Finance section to give it an updated layout and improve the way financial information is presented. This was another major area of focus in our redesign.
+We redesigned the Finance section to give it an updated layout and improve the way financial information is presented. This was another major area of focus in our redesign. We also added interactive features to make the Finance page easier to navigate and explore. The buttons in the initial summary section act as shortcuts to different sections of the page. For example, clicking **Explore the Market** takes users directly to the Discover the Market section, while clicking **My Watchlist** takes them to their watchlist.
+
+Within the market section, users can click the star icon next to a company to add it to their watchlist. They can also click on a company's name in either the market or watchlist section to expand its information and view more details.
+
+<p align="center">
+  <img src="docs/images/finance1.png" width="48%">
+  <img src="docs/images/finance2.png" width="48%">
+</p>
+
+<p align="center">
+  <img src="docs/images/finance3.png" width="48%">
+  <img src="docs/images/finance4.png" width="48%">
+</p>
 
 **4. News, Sports, Entertainment, Lifestyle, and Technology Pages**
 
 We included tabs on the homepage for News, Sports, Entertainment, Lifestyle, and Technology, which lead to their respective pages. However, these pages are currently placeholders and have not been fully developed. They share a similar layout and do not yet have much differentiation in their content or design. This is an area that could be expanded in the future to give each category its own more distinct experience.
+
+**5. Light and Dark Mode**
+
+We also implemented a light and dark mode option that allows users to switch between different themes.
+
+<p align="center">
+  <img src="docs/images/lightmode.png" width="48%">
+  <img src="docs/images/darkmode.png" width="48%">
+</p>
