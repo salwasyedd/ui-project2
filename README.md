@@ -84,6 +84,38 @@ Through our evaluation and background research, we identified a few main areas t
 - Repetitive sign-in and verification steps interrupt the user's experience.
 - Taking users to a separate sign-in page can interrupt what they were originally doing.
 
+## Initial Sketches and Feedback
+
+Before implementing the redesign, we created two basic sketches to plan the layout and organization of the homepage and Finance page. These sketches helped us visualize how we wanted the redesigned interface to look before moving into implementation.
+
+### Sketches
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>Homepage Sketch</strong><br>
+      <img src="docs/images/homepage-sketch.jpeg" width="350">
+    </td>
+    <td align="center">
+      <strong>Finance Page Sketch</strong><br>
+      <img src="docs/images/finance-sketch.jpeg" width="350">
+    </td>
+  </tr>
+</table>
+
+### Feedback
+
+We shared our sketches and received the following feedback:
+
+- The redesigned homepage looks much less crowded compared to the current Yahoo interface and is easier on the eyes.
+- The text at the top of the homepage could be smaller and does not need to take up the entire width.
+- A light/dark mode option with a toggle button would be a useful addition.
+- The Finance page looks great, especially the idea of showing a summary when users first land on the page and allowing them to scroll for more detailed information.
+
+### Changes and Considerations Based on Feedback
+
+We incorporated the suggestion for a light/dark mode option by adding a toggle that allows users to switch between the two themes. We also considered the feedback about keeping the homepage simple and making the Finance page easy to navigate, with an overview available before users explore more detailed information.
+
 ### Redesign Decisions and Approach
 
 Based on our findings, we focused on simplifying the landing page, improving the sign-in experience, and revamping the Finance section.
