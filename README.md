@@ -168,6 +168,15 @@ We also implemented a light and dark mode option that allows users to switch bet
   <img src="docs/images/darkmode.png" width="48%">
 </p>
 
+## AI Usage
+
+We used AI tools throughout the project to assist with implementation and documentation.
+
+- **Claude Code:** Integrated with VS Code to assist with implementing and refining the redesign. It was also used to implement our existing sign-in design choices and help integrate the logic for the sign-in pop-up.
+- **ChatGPT:** Used to summarize research notes and help improve grammar, wording, and clarity in our project documentation.
+
+AI tools were used as supporting resources, while our team made the design decisions and reviewed the resulting implementations and documentation.
+
 ## Project Demo
 
 **Video Demo:** [Watch our project demo](https://drive.google.com/file/d/1BLMcUFpPelHPQUrSFI0_aIewel7-RMVm/view?usp=sharing)
