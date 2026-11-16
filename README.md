@@ -170,7 +170,7 @@ We also implemented a light and dark mode option that allows users to switch bet
 
 ## Project Demo
 
-**Video Demo:** [Watch our project demo](ADD-VIDEO-LINK-HERE)
+**Video Demo:** [Watch our project demo](https://drive.google.com/file/d/1BLMcUFpPelHPQUrSFI0_aIewel7-RMVm/view?usp=sharing)
 
 ## Source Code and Live Application
 
