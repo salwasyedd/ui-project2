@@ -167,3 +167,12 @@ We also implemented a light and dark mode option that allows users to switch bet
   <img src="docs/images/lightmode.png" width="48%">
   <img src="docs/images/darkmode.png" width="48%">
 </p>
+
+## Project Demo
+
+**Video Demo:** [Watch our project demo](ADD-VIDEO-LINK-HERE)
+
+## Source Code and Live Application
+
+- **GitHub Repository:** [View the source code](https://github.com/salwasyedd/ui-design-portfolio)
+- **Live Application:** [Visit the Yahoo Redesign](https://yahoo-redesign-one.vercel.app/)
